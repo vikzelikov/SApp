@@ -3,10 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		139AF4AC71149B09D1405417 /* Pods_SApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 580AD19329A5CEB0B4D7EFA4 /* Pods_SApp.framework */; };
 		18CC8CF5265C39C30032FE8A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CC8CF4265C39C30032FE8A /* AppDelegate.swift */; };
 		18CC8CF7265C39C30032FE8A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CC8CF6265C39C30032FE8A /* SceneDelegate.swift */; };
 		18CC8CF9265C39C30032FE8A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CC8CF8265C39C30032FE8A /* ViewController.swift */; };
@@ -24,6 +25,9 @@
 		18CC8CFD265C39C40032FE8A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		18CC8D00265C39C40032FE8A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		18CC8D02265C39C40032FE8A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		37CB25FBCB1D9AD5B1734518 /* Pods-SApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SApp.debug.xcconfig"; path = "Target Support Files/Pods-SApp/Pods-SApp.debug.xcconfig"; sourceTree = "<group>"; };
+		580AD19329A5CEB0B4D7EFA4 /* Pods_SApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6465F18F39CD608697EE040E /* Pods-SApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SApp.release.xcconfig"; path = "Target Support Files/Pods-SApp/Pods-SApp.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +35,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				139AF4AC71149B09D1405417 /* Pods_SApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -42,6 +47,8 @@
 			children = (
 				18CC8CF3265C39C30032FE8A /* SApp */,
 				18CC8CF2265C39C30032FE8A /* Products */,
+				D90E837C03B60682881A45E4 /* Pods */,
+				853AAA24C795BF80A0017425 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -67,6 +74,23 @@
 			path = SApp;
 			sourceTree = "<group>";
 		};
+		853AAA24C795BF80A0017425 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				580AD19329A5CEB0B4D7EFA4 /* Pods_SApp.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D90E837C03B60682881A45E4 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				37CB25FBCB1D9AD5B1734518 /* Pods-SApp.debug.xcconfig */,
+				6465F18F39CD608697EE040E /* Pods-SApp.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -74,9 +98,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 18CC8D05265C39C40032FE8A /* Build configuration list for PBXNativeTarget "SApp" */;
 			buildPhases = (
+				B5B5A0DB31F3B72AEF67CD16 /* [CP] Check Pods Manifest.lock */,
 				18CC8CED265C39C30032FE8A /* Sources */,
 				18CC8CEE265C39C30032FE8A /* Frameworks */,
 				18CC8CEF265C39C30032FE8A /* Resources */,
+				EEE9744B5392E63BF0A83D7E /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -131,6 +157,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		B5B5A0DB31F3B72AEF67CD16 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SApp-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EEE9744B5392E63BF0A83D7E /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SApp/Pods-SApp-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SApp/Pods-SApp-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SApp/Pods-SApp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		18CC8CED265C39C30032FE8A /* Sources */ = {
@@ -283,12 +351,14 @@
 		};
 		18CC8D06265C39C40032FE8A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 37CB25FBCB1D9AD5B1734518 /* Pods-SApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = RS4VTLD734;
 				INFOPLIST_FILE = SApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -302,12 +372,14 @@
 		};
 		18CC8D07265C39C40032FE8A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6465F18F39CD608697EE040E /* Pods-SApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = RS4VTLD734;
 				INFOPLIST_FILE = SApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
