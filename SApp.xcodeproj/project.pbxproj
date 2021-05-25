@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		139AF4AC71149B09D1405417 /* Pods_SApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 580AD19329A5CEB0B4D7EFA4 /* Pods_SApp.framework */; };
+		18BA247A265D77B20015FB25 /* MoviesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BA2479265D77B20015FB25 /* MoviesViewController.swift */; };
+		18BA247C265D78270015FB25 /* MoviesStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18BA247B265D78270015FB25 /* MoviesStoryboard.storyboard */; };
 		18CC8CF5265C39C30032FE8A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CC8CF4265C39C30032FE8A /* AppDelegate.swift */; };
 		18CC8CF7265C39C30032FE8A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CC8CF6265C39C30032FE8A /* SceneDelegate.swift */; };
 		18CC8CF9265C39C30032FE8A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CC8CF8265C39C30032FE8A /* ViewController.swift */; };
@@ -17,6 +19,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		18BA2479265D77B20015FB25 /* MoviesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesViewController.swift; sourceTree = "<group>"; };
+		18BA247B265D78270015FB25 /* MoviesStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MoviesStoryboard.storyboard; sourceTree = "<group>"; };
 		18CC8CF1265C39C30032FE8A /* SApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18CC8CF4265C39C30032FE8A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		18CC8CF6265C39C30032FE8A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -42,6 +46,63 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		18BA2472265D748B0015FB25 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				18BA2474265D76E30015FB25 /* DetailMovie */,
+				18BA2473265D76D40015FB25 /* Movies */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		18BA2473265D76D40015FB25 /* Movies */ = {
+			isa = PBXGroup;
+			children = (
+				18BA2476265D770D0015FB25 /* ViewModel */,
+				18BA2475265D77030015FB25 /* View */,
+			);
+			path = Movies;
+			sourceTree = "<group>";
+		};
+		18BA2474265D76E30015FB25 /* DetailMovie */ = {
+			isa = PBXGroup;
+			children = (
+				18BA2478265D77190015FB25 /* ViewModel */,
+				18BA2477265D77140015FB25 /* View */,
+			);
+			path = DetailMovie;
+			sourceTree = "<group>";
+		};
+		18BA2475265D77030015FB25 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				18BA2479265D77B20015FB25 /* MoviesViewController.swift */,
+				18BA247B265D78270015FB25 /* MoviesStoryboard.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		18BA2476265D770D0015FB25 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		18BA2477265D77140015FB25 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		18BA2478265D77190015FB25 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		18CC8CE8265C39C30032FE8A = {
 			isa = PBXGroup;
 			children = (
@@ -63,6 +124,7 @@
 		18CC8CF3265C39C30032FE8A /* SApp */ = {
 			isa = PBXGroup;
 			children = (
+				18BA2472265D748B0015FB25 /* Presentation */,
 				18CC8CF4265C39C30032FE8A /* AppDelegate.swift */,
 				18CC8CF6265C39C30032FE8A /* SceneDelegate.swift */,
 				18CC8CF8265C39C30032FE8A /* ViewController.swift */,
@@ -152,6 +214,7 @@
 			files = (
 				18CC8D01265C39C40032FE8A /* LaunchScreen.storyboard in Resources */,
 				18CC8CFE265C39C40032FE8A /* Assets.xcassets in Resources */,
+				18BA247C265D78270015FB25 /* MoviesStoryboard.storyboard in Resources */,
 				18CC8CFC265C39C30032FE8A /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -208,6 +271,7 @@
 				18CC8CF9265C39C30032FE8A /* ViewController.swift in Sources */,
 				18CC8CF5265C39C30032FE8A /* AppDelegate.swift in Sources */,
 				18CC8CF7265C39C30032FE8A /* SceneDelegate.swift in Sources */,
+				18BA247A265D77B20015FB25 /* MoviesViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
