@@ -1,5 +1,5 @@
 //
-//  MoviesViewController.swift
+//  SearchMoviesController.swift
 //  SApp
 //
 //  Created by Yegor on 25.05.2021.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MoviesViewController: UIViewController {
+class SearchMoviesViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
