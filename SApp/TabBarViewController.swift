@@ -19,19 +19,19 @@ class TabBarViewController: UITabBarController {
     
     
     func setupTabBar() {
-
         let searchMovies = UIStoryboard(name: "SearchMovies", bundle: nil)
+
         guard let firstVC = searchMovies.instantiateViewController(withIdentifier: "SearchMoviesViewController") as? SearchMoviesViewController else { return }
-        firstVC.tabBarItem = UITabBarItem(title: "Search", image: nil, tag: 0)
+//        firstVC.tabBarItem = UITabBarItem(title: "Search", image: UIImage(named: "carCallIcon"), tag: 0)
 
         let favoriteMovies = UIStoryboard(name: "FavoriteMovies", bundle: nil)
         guard let secondVC = favoriteMovies.instantiateViewController(withIdentifier: "FavoriteMoviesViewController") as? FavoriteMoviesViewController else { return }
-        secondVC.tabBarItem = UITabBarItem(title: "Favorites", image: nil, tag: 1)
-
+//        secondVC.tabBarItem = UITabBarItem(title: "Favorites", image: UIImage(named: "profileIcon"), tag: 1)
 
         let tabBarList = [firstVC, secondVC]
         
         viewControllers = tabBarList
+        self.selectedIndex = 0
     }
 }
 
