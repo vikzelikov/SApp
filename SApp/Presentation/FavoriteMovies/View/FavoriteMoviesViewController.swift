@@ -1,13 +1,13 @@
 //
-//  MoviesViewController.swift
+//  FavoriteMoviesViewController.swift
 //  SApp
 //
-//  Created by Yegor on 25.05.2021.
+//  Created by Yegor on 27.05.2021.
 //
 
 import UIKit
 
-class MoviesViewController: UIViewController {
+class FavoriteMoviesViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
