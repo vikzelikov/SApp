@@ -17,7 +17,6 @@ class TabBarViewController: UITabBarController {
         tabBar.barTintColor = .white
     }
     
-    
     func setupTabBar() {
         let searchMovies = UIStoryboard(name: "SearchMovies", bundle: nil)
 
@@ -33,5 +32,6 @@ class TabBarViewController: UITabBarController {
         viewControllers = tabBarList
         self.selectedIndex = 0
     }
+    
 }
 
