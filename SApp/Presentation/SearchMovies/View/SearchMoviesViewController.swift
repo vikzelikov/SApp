@@ -11,16 +11,32 @@ class SearchMoviesViewController: UIViewController {
     
     var viewModel: MoviesViewModel!
     
+    private var moviesTableViewController: MoviesTableViewController?
+    
     @IBOutlet private var searchBarContainer: UIView!
-
     
     private var searchController = UISearchController(searchResultsController: nil)
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setupViews()
+//        bind(viewModel: viewModel)
+    }
+    
+    private func setupViews() {
+//        title = viewModel.screenTitle
+        title = "Hello!!"
+        setupSearchController()
     }
 
+    private func bind(viewModel: MoviesViewModel) {
+        viewModel.items.observe(on: self) { [weak self] _ in self?.updateItems() }
+    }
     
+    private func updateItems() {
+        moviesTableViewController?.reload()
+    }
     
 
 }
@@ -29,6 +45,7 @@ extension SearchMoviesViewController {
     private func setupSearchController() {
         searchController.delegate = self
         searchController.searchBar.delegate = self
+        searchController.searchBar.placeholder = "Search!"
 //        searchController.searchBar.placeholder = viewModel.searchBarPlaceholder
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.translatesAutoresizingMaskIntoConstraints = true

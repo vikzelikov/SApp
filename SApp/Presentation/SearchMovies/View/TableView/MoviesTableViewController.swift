@@ -15,6 +15,10 @@ class MoviesTableViewController: UITableViewController {
         tableView.estimatedRowHeight = MovieCell.height
         tableView.rowHeight = UITableView.automaticDimension
     }
+    
+    func reload() {
+        tableView.reloadData()
+    }
 }
 
 extension MoviesTableViewController {
