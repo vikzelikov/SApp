@@ -12,12 +12,12 @@ class MovieCell: UITableViewCell {
     private var viewModel: MoviesCellViewModel!
     
     static let cellIdentifier = String(describing: MovieCell.self)
-    static let height = CGFloat(130)
     
-    @IBOutlet private var titleLabel: UILabel!
-    @IBOutlet private var dateLabel: UILabel!
-    @IBOutlet private var overviewLabel: UILabel!
-    @IBOutlet private var movieImageView: UIImageView!
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var overviewLabel: UILabel!
+    @IBOutlet weak var movieImageView: UIImageView!
+    
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -29,10 +29,11 @@ class MovieCell: UITableViewCell {
     
     func bind(viewModel: MoviesCellViewModel) {
         self.viewModel = viewModel
+
+        titleLabel?.text = viewModel.title
+        dateLabel?.text = viewModel.date
+        overviewLabel?.text = viewModel.overview
         
-        titleLabel.text = viewModel.title
-        dateLabel.text = viewModel.date
-        overviewLabel.text = viewModel.overview
     }
 
 //    private func updatePosterImage(width: Int) {

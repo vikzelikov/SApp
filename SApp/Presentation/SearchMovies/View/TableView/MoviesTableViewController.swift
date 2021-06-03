@@ -9,26 +9,33 @@ import UIKit
 
 class MoviesTableViewController: UITableViewController {
     
-    var viewModel: MoviesViewModel!
-
-    private func setupViews() {
-        tableView.estimatedRowHeight = MovieCell.height
-        tableView.rowHeight = UITableView.automaticDimension
+    var viewModel: MoviesViewModelLogic!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        tableView.allowsSelection = false
+        tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
+        tableView.register(MovieCell.self, forCellReuseIdentifier: MovieCell.cellIdentifier)
+    }
+    
+    func reload() {
+        tableView.reloadData()
     }
 }
 
 extension MoviesTableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.items.value.count
+        return viewModel.items.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: MovieCell.cellIdentifier, for: indexPath) as? MovieCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? MovieCell else {
             assertionFailure("Cannot dequeue reusable cell")
             return UITableViewCell()
         }
         
-        cell.bind(viewModel: viewModel.items.value[indexPath.row])
+        cell.bind(viewModel: viewModel.items[indexPath.row])
 
         //Pagination?
 //        if indexPath.row == viewModel.items.value.count - 1 {
