@@ -14,7 +14,7 @@
             <objects>
                 <tableViewController id="jWQ-8i-41V" customClass="MoviesTableViewController" customModule="SApp" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="D1f-b8-78j">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="469"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="459"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
@@ -103,14 +103,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="All-FD-LNy">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="u5r-yj-4ue"/>
+                                    <constraint firstAttribute="height" constant="60" id="u5r-yj-4ue"/>
                                 </constraints>
                             </view>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hp8-ZD-zwE">
-                                <rect key="frame" x="0.0" y="50" width="320" height="469"/>
+                                <rect key="frame" x="0.0" y="60" width="320" height="459"/>
                                 <connections>
                                     <segue destination="jWQ-8i-41V" kind="embed" identifier="MoviesTableViewController" id="M5d-eg-9nT"/>
                                 </connections>

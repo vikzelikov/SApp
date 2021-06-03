@@ -35,7 +35,7 @@ class SearchMoviesViewController: UIViewController {
         viewModel = MoviesViewModel()
         
         if segue.identifier == String(describing: MoviesTableViewController.self),
-           let destinationVC = segue.destination as? MoviesTableViewController {
+            let destinationVC = segue.destination as? MoviesTableViewController {
             moviesTableViewController = destinationVC
             moviesTableViewController?.viewModel = viewModel
         }
@@ -68,7 +68,7 @@ extension SearchMoviesViewController: UISearchBarDelegate {
         searchController.isActive = false
         viewModel?.search(query: searchText)
         
-        moviesTableViewController?.reload()
+        updateItems()
     }
 
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
