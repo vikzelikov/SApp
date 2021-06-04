@@ -42,11 +42,8 @@ class SearchMoviesUseCaseImpl: SearchMoviesUseCase {
                 //save query string in recent
             }
 
-            completion(result)
+//            completion(result)
         })
-        
-        print("2222")
-        
     }
 }
 

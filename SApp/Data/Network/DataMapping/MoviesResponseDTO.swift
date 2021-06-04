@@ -37,24 +37,4 @@ struct MoviesResponseDTO: Decodable {
         let overview: String?
         let releaseDate: String?
     }
-    
-   
-    
-    
-    
-}
-
-
-struct testMovie: Decodable {
-    let page: Int
-    let total_pages: Int
-    let movies: [MovieDTO]
-    
-    struct MovieDTO: Decodable {
-        let id: Int
-        let title: String?
-        let poster_path: String?
-        let overview: String?
-        let release_date: String?
-    }
 }

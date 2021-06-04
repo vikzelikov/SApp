@@ -7,7 +7,12 @@
 
 import Foundation
 
-struct MoviesRequestDTO: Encodable {
-    let query: String
-    let page: Int
+class MoviesRequestDTO {
+    private var query: String?
+    
+    init(query: String) {
+        self.query = query
+    }
+    
+    lazy var parameters = ["api_key": Constant.API_KEY, "query": query]
 }
