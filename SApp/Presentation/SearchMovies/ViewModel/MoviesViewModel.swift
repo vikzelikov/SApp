@@ -18,7 +18,8 @@ protocol MoviesViewModelLogic {
 class MoviesViewModel: MoviesViewModelLogic {
     
     private let searchMoviesUseCase: SearchMoviesUseCase?
-    
+    private var currentPage: Int = 0
+    private var totalPageCount: Int = 1
     var items: [MoviesCellViewModel] = []
 //    var items: Observable<[MoviesCellViewModel]> = Observable([])
     
@@ -27,8 +28,12 @@ class MoviesViewModel: MoviesViewModelLogic {
     }
 
     func search(query: String) {
+        resetPages()
+        
         guard !query.isEmpty else { return }
-        getMovies(query: MovieQuery(query: query))
+        
+        let movieQuery = MovieQuery(query: query, page: currentPage)
+        getMovies(query:movieQuery)
     }
     
     func cancelSearch() {
@@ -36,10 +41,7 @@ class MoviesViewModel: MoviesViewModelLogic {
     }
     
     private func getMovies(query: MovieQuery) {
-        
-        var request = SearchMoviesUseCaseRequest(query: MovieQuery(query: "Jack"), page: 0)
-        
-        searchMoviesUseCase?.execute(request: request, completion: { result in
+        searchMoviesUseCase?.execute(query: query, completion: { result in
             
         })
     }
@@ -48,6 +50,12 @@ class MoviesViewModel: MoviesViewModelLogic {
         //append and show
     }
     
-    
+    private func resetPages() {
+        currentPage = 0
+        totalPageCount = 1
+//        pages.removeAll()
+//        items.value.removeAll()
+    }
+
     
 }

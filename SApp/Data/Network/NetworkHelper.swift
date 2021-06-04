@@ -16,12 +16,16 @@ public enum NetworkError: Error {
 }
 
 
-struct NetworkService {
+struct NetworkHelper {
     static func getHeaders() -> HTTPHeaders {
         return [.contentType("application/json;charset=utf-8")]
     }
     
     static func getUrlSearchMovies() -> URL? {
         return URL(string: Constant.BASE_URL + "/3/search/movie")
+    }
+    
+    static func getUrlImagesMovies() -> URL? {
+        return URL(string: Constant.BASE_URL + "/t/p/w")
     }
 }

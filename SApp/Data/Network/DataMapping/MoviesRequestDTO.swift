@@ -8,11 +8,13 @@
 import Foundation
 
 class MoviesRequestDTO {
-    private var query: String?
+    private var query: String
+    private var page: String
     
-    init(query: String) {
+    init(query: String, page: String) {
         self.query = query
+        self.page = page
     }
     
-    lazy var parameters = ["api_key": Constant.API_KEY, "query": query]
+    lazy var parameters = ["api_key": Constant.API_KEY, "query": query, "page": page]
 }

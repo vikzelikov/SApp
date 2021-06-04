@@ -11,24 +11,14 @@ struct MoviesCellViewModel {
     let title: String
     let overview: String
     let date: String
-    let movieImagePath: String?
+    let movieImageUrl: String?
 }
 
 extension MoviesCellViewModel {
     init(movie: Movie) {
         self.title = movie.title ?? ""
-        self.movieImagePath = movie.movieImagePath
+        self.movieImageUrl = movie.movieImageUrl
         self.overview = movie.overview ?? ""
-        if let date = movie.date {
-            self.date = "\(NSLocalizedString("Release Date", comment: "")): \(dateFormatter.string(from: date))"
-        } else {
-            self.date = NSLocalizedString("To be announced", comment: "")
-        }
+        self.date = movie.date ?? ""
     }
 }
-
-private let dateFormatter: DateFormatter = {
-    let formatter = DateFormatter()
-    formatter.dateStyle = .medium
-    return formatter
-}()

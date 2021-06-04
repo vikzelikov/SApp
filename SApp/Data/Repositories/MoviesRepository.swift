@@ -9,26 +9,31 @@ import Foundation
 import Alamofire
 
 protocol MoviesRepository {
-    func fetchMoviesList(query: MovieQuery, page: Int, completion: @escaping (Result<MoviesResponseDTO, Error>) -> Void)
+    func fetchMoviesList(query: MovieQuery, completion: @escaping (Result<MoviesResponseDTO, Error>) -> Void)
 }
 
 class MoviesRepositoryImpl: MoviesRepository {
     
-    func fetchMoviesList(query: MovieQuery,
-                         page: Int,
-                         completion: @escaping (Result<MoviesResponseDTO, Error>) -> Void) {
+    func fetchMoviesList(query: MovieQuery, completion: @escaping (Result<MoviesResponseDTO, Error>) -> Void) {
         
-        guard let url = NetworkService.getUrlSearchMovies() else {
+        guard let url = NetworkHelper.getUrlSearchMovies() else {
             completion(.failure(NetworkError.cancelled))
             return
         }
-        let requestParameters = MoviesRequestDTO(query: query.query).parameters
-        let headers: HTTPHeaders = NetworkService.getHeaders()
+        let parameters = MoviesRequestDTO(query: query.query, page: String(query.page)).parameters
+        let headers: HTTPHeaders = NetworkHelper.getHeaders()
 
-        AF.request(url, method: .get, parameters: requestParameters, headers: headers).responseString { response in
+        AF.request(url, method: .get, parameters: parameters, headers: headers).responseString { response in
             
-            guard let data = response.data else { return }
-            guard let response = response.response else { return }
+            guard let data = response.data else {
+                completion(.failure(NetworkError.errorData))
+                return
+            }
+            
+            guard let response = response.response else {
+                completion(.failure(NetworkError.errorData))
+                return
+            }
             
             if response.statusCode != 200 {
                 completion(.failure(NetworkError.errorCode(statusCode: response.statusCode)))
