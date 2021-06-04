@@ -8,5 +8,6 @@ target 'SApp' do
   # Pods for SApp
 
 pod “Alamofire”
+pod 'SDWebImage', '~> 5.0'
 
 end

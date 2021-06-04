@@ -8,8 +8,7 @@
 import Foundation
 
 protocol SearchMoviesUseCase {
-    func execute(request: SearchMoviesUseCaseRequest,
-                 completion: @escaping (Result<MoviesPage, Error>) -> Void)
+    func execute(query: MovieQuery, completion: @escaping (Result<MoviesPage, Error>) -> Void)
 }
 
 class SearchMoviesUseCaseImpl: SearchMoviesUseCase {
@@ -20,37 +19,31 @@ class SearchMoviesUseCaseImpl: SearchMoviesUseCase {
         self.moviesRepository = MoviesRepositoryImpl()
     }
     
-    func execute(request: SearchMoviesUseCaseRequest,
-                 completion: @escaping (Result<MoviesPage, Error>) -> Void) {
+    func execute(query: MovieQuery, completion: @escaping (Result<MoviesPage, Error>) -> Void) {
 
-        
-        
-            moviesRepository?.fetchMoviesList(query: request.query, page: request.page, completion: { result in
-
-                print("!!!!")
+            moviesRepository?.fetchMoviesList(query: query, completion: { result in
+                switch result {
+                case .success(let page):
+                    print("")
+                case .failure(let error):
+                    print(" \(error)")
+                }
                 do {
-                    let x = try result.get().movies.first?.title
-                    if x != nil {
-                        print(x)
+                    let responseMoviesDTO = try result.get()
+                    
+                    //convertion from DTO
+                    let movies = responseMoviesDTO.movies.map {
+                        Movie(id: String($0.id), title: $0.title, movieImageUrl: $0.movieImageUrl, overview: $0.overview, date: $0.releaseDate)
+                    }
+                    let moviesPage = MoviesPage(page: responseMoviesDTO.page, totalPages: responseMoviesDTO.totalPages, movies: movies)
+                    completion(.success(moviesPage))
+                    
+                    if case .success = result {
+                        //save query.query string in recent
                     }
                 } catch {
-                    print("пиздец")
+                    
                 }
-                
-                
-            if case .success = result {
-                //save query string in recent
-            }
-
-            completion(result)
         })
-        
-        print("2222")
-        
     }
-}
-
-struct SearchMoviesUseCaseRequest {
-    let query: MovieQuery
-    let page: Int
 }

@@ -8,17 +8,11 @@
 import Foundation
 
 struct Movie: Equatable, Identifiable {
-    typealias Identifier = String
-    enum Genre {
-        case adventure
-        case scienceFiction
-    }
-    let id: Identifier
+    let id: String
     let title: String?
-    let genre: Genre?
-    let movieImagePath: String?
+    let movieImageUrl: String?
     let overview: String?
-    let date: Date?
+    let date: String?
 }
 
 struct MoviesPage: Equatable {

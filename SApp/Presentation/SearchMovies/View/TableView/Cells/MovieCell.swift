@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class MovieCell: UITableViewCell {
     
@@ -34,20 +35,11 @@ class MovieCell: UITableViewCell {
         dateLabel?.text = viewModel.date
         overviewLabel?.text = viewModel.overview
         
+        if let movieImageUrl = viewModel.movieImageUrl {
+            if let url = NetworkHelper.getUrlImagesMovies(nameImage: movieImageUrl) {
+                movieImageView.sd_setImage(with: url)
+            }
+        }
     }
 
-//    private func updatePosterImage(width: Int) {
-//        posterImageView.image = nil
-//        guard let posterImagePath = viewModel.posterImagePath else { return }
-//
-//        imageLoadTask = posterImagesRepository?.fetchImage(with: posterImagePath, width: width) { [weak self] result in
-//            guard let self = self else { return }
-//            guard self.viewModel.posterImagePath == posterImagePath else { return }
-//            if case let .success(data) = result {
-//                self.posterImageView.image = UIImage(data: data)
-//            }
-//            self.imageLoadTask = nil
-//        }
-//    }
-    
 }

@@ -9,4 +9,5 @@ import Foundation
 
 struct MovieQuery: Equatable {
     let query: String
+    let page: Int
 }

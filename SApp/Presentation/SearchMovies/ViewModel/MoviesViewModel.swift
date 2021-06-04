@@ -8,8 +8,7 @@
 import Foundation
 
 protocol MoviesViewModelLogic {
-    var items: [MoviesCellViewModel] { get }
-//    var items: Observable<[MoviesCellViewModel]> { get }
+    var items: Observable<[MoviesCellViewModel]> { get }
     
     func search(query: String)
     func cancelSearch()
@@ -18,17 +17,21 @@ protocol MoviesViewModelLogic {
 class MoviesViewModel: MoviesViewModelLogic {
     
     private let searchMoviesUseCase: SearchMoviesUseCase?
-    
-    var items: [MoviesCellViewModel] = []
-//    var items: Observable<[MoviesCellViewModel]> = Observable([])
+    private var currentPage: Int = 1
+    private var totalPageCount: Int = 1
+    var items: Observable<[MoviesCellViewModel]> = Observable([])
     
     init() {
         self.searchMoviesUseCase = SearchMoviesUseCaseImpl()
     }
 
     func search(query: String) {
+        resetPages()
+        
         guard !query.isEmpty else { return }
-        getMovies(query: MovieQuery(query: query))
+        
+        let movieQuery = MovieQuery(query: query, page: currentPage)
+        getMovies(query: movieQuery)
     }
     
     func cancelSearch() {
@@ -36,36 +39,29 @@ class MoviesViewModel: MoviesViewModelLogic {
     }
     
     private func getMovies(query: MovieQuery) {
-        //go to use cases
-//         let movies = [
-//            MoviesCellViewModel(title: "Brigada", overview: "some overview some overview overview some vor", date: "12:12", movieImagePath: nil),
-//            MoviesCellViewModel(title: "Brigada1", overview: "some overview some overview overview some vor", date: "12:12", movieImagePath: nil),
-//            MoviesCellViewModel(title: "Brigada2", overview: "some overview some overview overview some vor", date: "12:12", movieImagePath: nil),
-//            MoviesCellViewModel(title: "Brigada3", overview: "some overview some overview overview some vor", date: "12:12", movieImagePath: nil),
-//            MoviesCellViewModel(title: "Brigada4", overview: "some overview some overview overview some vor", date: "12:12", movieImagePath: nil),
-//            MoviesCellViewModel(title: "Brigada5", overview: "some overview some overview overview some vor", date: "12:12", movieImagePath: nil),
-//            MoviesCellViewModel(title: "Brigada6", overview: "some overview some overview overview some vor", date: "12:12", movieImagePath: nil),
-//
-//        ]
-//
-//        for el in movies {
-//            items.append(el)
-//        }
-        
-        var request = SearchMoviesUseCaseRequest(query: MovieQuery(query: "Jack"), page: 0)
-        
-        searchMoviesUseCase?.execute(request: request, completion: { result in
-            
+        searchMoviesUseCase?.execute(query: query, completion: { result in
+            switch result {
+            case .success(let page):
+                self.appendMovies(page: page)
+            case .failure(let error):
+                print("ERROR \(error)")
+            }
         })
-        
-        print("1111")
-        
     }
     
     private func appendMovies(page: MoviesPage) {
-        //append and show
+        currentPage = page.page
+        totalPageCount = page.totalPages
+        
+        items.value = page.movies.map(MoviesCellViewModel.init)
     }
     
-    
+    private func resetPages() {
+        currentPage = 1
+        totalPageCount = 1
+//        pages.removeAll()
+        items.value.removeAll()
+    }
+
     
 }
