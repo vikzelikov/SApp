@@ -25,7 +25,7 @@ struct NetworkHelper {
         return URL(string: Constant.BASE_URL + "/3/search/movie")
     }
     
-    static func getUrlImagesMovies() -> URL? {
-        return URL(string: Constant.BASE_URL + "/t/p/w")
+    static func getUrlImagesMovies(nameImage: String) -> URL? {
+        return URL(string: Constant.IMAGES_BASE_URL + "/t/p/w500" + nameImage)
     }
 }

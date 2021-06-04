@@ -8,8 +8,7 @@
 import Foundation
 
 protocol MoviesViewModelLogic {
-    var items: [MoviesCellViewModel] { get }
-//    var items: Observable<[MoviesCellViewModel]> { get }
+    var items: Observable<[MoviesCellViewModel]> { get }
     
     func search(query: String)
     func cancelSearch()
@@ -18,10 +17,9 @@ protocol MoviesViewModelLogic {
 class MoviesViewModel: MoviesViewModelLogic {
     
     private let searchMoviesUseCase: SearchMoviesUseCase?
-    private var currentPage: Int = 0
+    private var currentPage: Int = 1
     private var totalPageCount: Int = 1
-    var items: [MoviesCellViewModel] = []
-//    var items: Observable<[MoviesCellViewModel]> = Observable([])
+    var items: Observable<[MoviesCellViewModel]> = Observable([])
     
     init() {
         self.searchMoviesUseCase = SearchMoviesUseCaseImpl()
@@ -33,7 +31,7 @@ class MoviesViewModel: MoviesViewModelLogic {
         guard !query.isEmpty else { return }
         
         let movieQuery = MovieQuery(query: query, page: currentPage)
-        getMovies(query:movieQuery)
+        getMovies(query: movieQuery)
     }
     
     func cancelSearch() {
@@ -42,19 +40,27 @@ class MoviesViewModel: MoviesViewModelLogic {
     
     private func getMovies(query: MovieQuery) {
         searchMoviesUseCase?.execute(query: query, completion: { result in
-            
+            switch result {
+            case .success(let page):
+                self.appendMovies(page: page)
+            case .failure(let error):
+                print("ERROR \(error)")
+            }
         })
     }
     
     private func appendMovies(page: MoviesPage) {
-        //append and show
+        currentPage = page.page
+        totalPageCount = page.totalPages
+        
+        items.value = page.movies.map(MoviesCellViewModel.init)
     }
     
     private func resetPages() {
-        currentPage = 0
+        currentPage = 1
         totalPageCount = 1
 //        pages.removeAll()
-//        items.value.removeAll()
+        items.value.removeAll()
     }
 
     

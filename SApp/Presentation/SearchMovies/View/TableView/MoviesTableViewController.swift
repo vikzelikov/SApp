@@ -15,7 +15,9 @@ class MoviesTableViewController: UITableViewController {
         super.viewDidLoad()
         
         tableView.allowsSelection = false
-        tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
+//        tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
+        tableView.estimatedRowHeight = tableView.rowHeight
+        tableView.rowHeight = UITableView.automaticDimension
         tableView.register(MovieCell.self, forCellReuseIdentifier: MovieCell.cellIdentifier)
     }
     
@@ -26,7 +28,7 @@ class MoviesTableViewController: UITableViewController {
 
 extension MoviesTableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.items.count
+        return viewModel.items.value.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -35,7 +37,7 @@ extension MoviesTableViewController {
             return UITableViewCell()
         }
         
-        cell.bind(viewModel: viewModel.items[indexPath.row])
+        cell.bind(viewModel: viewModel.items.value[indexPath.row])
 
         //Pagination?
 //        if indexPath.row == viewModel.items.value.count - 1 {

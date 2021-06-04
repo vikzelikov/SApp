@@ -20,11 +20,18 @@ class SearchMoviesViewController: UIViewController {
         super.viewDidLoad()
 
         setupViews()
+        
+        setObservers()
     }
     
     private func setupViews() {
-//        title = viewModel.screenTitle
         setupSearchController()
+    }
+    
+    private func setObservers() {
+        viewModel?.items.observe(on: self) {
+            [weak self] _ in self?.updateItems()
+        }
     }
     
     private func updateItems() {
@@ -54,7 +61,6 @@ extension SearchMoviesViewController {
         searchController.searchBar.delegate = self
         searchController.searchResultsUpdater = self
         searchController.searchBar.placeholder = "Search"
-//        searchController.searchBar.placeholder = viewModel.searchBarPlaceholder
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.barStyle = .default
         searchController.hidesNavigationBarDuringPresentation = false
@@ -67,8 +73,6 @@ extension SearchMoviesViewController: UISearchBarDelegate {
         guard let searchText = searchBar.text, !searchText.isEmpty else { return }
         searchController.isActive = false
         viewModel?.search(query: searchText)
-        
-        updateItems()
     }
 
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
