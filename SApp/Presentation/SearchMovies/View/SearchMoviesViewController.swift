@@ -10,6 +10,8 @@ import UIKit
 class SearchMoviesViewController: UIViewController {
     
     @IBOutlet private var searchBarContainer: UIView!
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var loadingView: UIActivityIndicatorView!
     
     private var viewModel: MoviesViewModelLogic?
     private var moviesTableViewController: MoviesTableViewController?
@@ -25,6 +27,7 @@ class SearchMoviesViewController: UIViewController {
     }
     
     private func setupViews() {
+        loadingView.isHidden = true
         setupSearchController()
     }
     
@@ -57,6 +60,8 @@ class SearchMoviesViewController: UIViewController {
 
 extension SearchMoviesViewController {
     private func setupSearchController() {
+        
+        
         searchController.delegate = self
         searchController.searchBar.delegate = self
         searchController.searchResultsUpdater = self
@@ -72,7 +77,16 @@ extension SearchMoviesViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         guard let searchText = searchBar.text, !searchText.isEmpty else { return }
         searchController.isActive = false
-        viewModel?.search(query: searchText)
+        viewModel?.search(query: searchText) { result in
+            //done searching
+            self.loadingView.isHidden = true
+            self.moviesTableViewController?.checkoutTableView(isHidden: false)
+        }
+        
+        moviesTableViewController?.checkoutTableView(isHidden: true)
+        titleLabel.isHidden = true
+        loadingView.isHidden = false
+        loadingView.startAnimating()
     }
 
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {

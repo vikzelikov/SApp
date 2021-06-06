@@ -10,8 +10,8 @@ import Foundation
 protocol MoviesViewModelLogic {
     var items: Observable<[MoviesCellViewModel]> { get }
 
-    func search(query: String)
-    func getMoviesNextPage()
+    func search(query: String, completion: @escaping (Bool) -> Void)
+    func getMoviesNextPage(completion: @escaping (Bool) -> Void)
     func cancelSearch()
 }
 
@@ -27,20 +27,20 @@ class MoviesViewModel: MoviesViewModelLogic {
         self.searchMoviesUseCase = SearchMoviesUseCaseImpl()
     }
 
-    func search(query: String) {
+    func search(query: String, completion: @escaping (Bool) -> Void) {
         resetPages()
         
         guard !query.isEmpty else { return }
         
         let movieQuery = MovieQuery(query: query, page: currentPage)
-        getMovies(query: movieQuery)
+        getMovies(query: movieQuery, completion: { result in completion(result) })
     }
     
     func cancelSearch() {
         
     }
     
-    private func getMovies(query: MovieQuery) {
+    private func getMovies(query: MovieQuery, completion: @escaping (Bool) -> Void) {
         self.query = query.query
         
         searchMoviesUseCase?.execute(query: query, completion: { result in
@@ -50,16 +50,17 @@ class MoviesViewModel: MoviesViewModelLogic {
             case .failure(let error):
                 print("ERROR \(error)")
             }
+            
+            completion(true)
         })
     }
     
-    func getMoviesNextPage() {
+    func getMoviesNextPage(completion: @escaping (Bool) -> Void) {
         if currentPage + 1 > totalPageCount { return }
         currentPage += 1
         
         let movieQuery = MovieQuery(query: self.query, page: currentPage)
-        getMovies(query: movieQuery)
-        
+        getMovies(query: movieQuery) { _ in }
     }
     
     private func appendMovies(page: MoviesPage) {

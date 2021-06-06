@@ -15,14 +15,20 @@ class MoviesTableViewController: UITableViewController {
         super.viewDidLoad()
         
         tableView.allowsSelection = false
-        tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
         tableView.estimatedRowHeight = tableView.rowHeight
         tableView.rowHeight = UITableView.automaticDimension
+        tableView.separatorColor = UIColor.lightGray
+        tableView.separatorStyle = .singleLine
+        tableView.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         tableView.register(MovieCell.self, forCellReuseIdentifier: MovieCell.cellIdentifier)
     }
     
     func reload() {
         tableView.reloadData()
+    }
+    
+    func checkoutTableView(isHidden: Bool) {
+        tableView.isHidden = isHidden
     }
 }
 
@@ -41,7 +47,7 @@ extension MoviesTableViewController {
 
         //pagination
         if indexPath.row == viewModel.items.value.count - 2 {
-            viewModel?.getMoviesNextPage()
+            viewModel?.getMoviesNextPage { _ in }
         }
         
         return cell
