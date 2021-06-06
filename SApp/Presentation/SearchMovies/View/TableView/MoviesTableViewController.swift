@@ -15,7 +15,7 @@ class MoviesTableViewController: UITableViewController {
         super.viewDidLoad()
         
         tableView.allowsSelection = false
-//        tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
+        tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
         tableView.estimatedRowHeight = tableView.rowHeight
         tableView.rowHeight = UITableView.automaticDimension
         tableView.register(MovieCell.self, forCellReuseIdentifier: MovieCell.cellIdentifier)
@@ -39,10 +39,10 @@ extension MoviesTableViewController {
         
         cell.bind(viewModel: viewModel.items.value[indexPath.row])
 
-        //Pagination?
-//        if indexPath.row == viewModel.items.value.count - 1 {
-//            viewModel.didLoadNextPage()
-//        }
+        //pagination
+        if indexPath.row == viewModel.items.value.count - 2 {
+            viewModel?.getMoviesNextPage()
+        }
         
         return cell
     }
