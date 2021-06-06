@@ -13,6 +13,7 @@ protocol MoviesViewModelLogic {
     func search(query: String, completion: @escaping (Bool) -> Void)
     func getMoviesNextPage(completion: @escaping (Bool) -> Void)
     func cancelSearch()
+    func didSelectItem(at index: Int)
 }
 
 class MoviesViewModel: MoviesViewModelLogic {
@@ -75,6 +76,10 @@ class MoviesViewModel: MoviesViewModelLogic {
         currentPage = 1
         totalPageCount = 1
         items.value.removeAll()
+    }
+    
+    func didSelectItem(at index: Int) {
+        
     }
 
 }

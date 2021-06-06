@@ -22,12 +22,12 @@ class SearchMoviesUseCaseImpl: SearchMoviesUseCase {
     func execute(query: MovieQuery, completion: @escaping (Result<MoviesPage, Error>) -> Void) {
 
             moviesRepository?.fetchMoviesList(query: query, completion: { result in
-                switch result {
-                case .success(let page):
-                    print("")
-                case .failure(let error):
-                    print(" \(error)")
-                }
+//                switch result {
+//                case .success(let page):
+//                    print("")
+//                case .failure(let error):
+//                    print(" \(error)")
+//                }
                 do {
                     let responseMoviesDTO = try result.get()
                     

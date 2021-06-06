@@ -60,8 +60,6 @@ class SearchMoviesViewController: UIViewController {
 
 extension SearchMoviesViewController {
     private func setupSearchController() {
-        
-        
         searchController.delegate = self
         searchController.searchBar.delegate = self
         searchController.searchResultsUpdater = self
