@@ -13,7 +13,7 @@ protocol MoviesViewModelLogic {
     func search(query: String, completion: @escaping (Bool) -> Void)
     func getMoviesNextPage(completion: @escaping (Bool) -> Void)
     func cancelSearch()
-    func didSelectItem(at index: Int)
+    func didSelectItem(at index: Int, completion: @escaping (Movie) -> Void)
 }
 
 class MoviesViewModel: MoviesViewModelLogic {
@@ -78,8 +78,17 @@ class MoviesViewModel: MoviesViewModelLogic {
         items.value.removeAll()
     }
     
-    func didSelectItem(at index: Int) {
+    func didSelectItem(at index: Int, completion: @escaping (Movie) -> Void) {
+        let movieCellViewModel = items.value[index]
+        let movie = Movie(
+            id: "",
+            title: movieCellViewModel.title,
+            movieImageUrl: movieCellViewModel.movieImageUrl,
+            overview: movieCellViewModel.overview,
+            date: movieCellViewModel.date
+        )
         
+        completion(movie)
     }
 
 }

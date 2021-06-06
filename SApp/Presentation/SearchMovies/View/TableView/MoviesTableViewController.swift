@@ -14,7 +14,6 @@ class MoviesTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView.allowsSelection = false
         tableView.estimatedRowHeight = tableView.rowHeight
         tableView.rowHeight = UITableView.automaticDimension
         tableView.separatorColor = UIColor.lightGray
@@ -54,6 +53,11 @@ extension MoviesTableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        viewModel.didSelectItem(at: indexPath.row)
+        viewModel.didSelectItem(at: indexPath.row) { result in
+            let vs = DetailMovieViewController(nibName: "DetailMovieViewController", bundle: nil)
+            vs.movie = result
+            self.present(vs, animated: true, completion: nil)
+            
+        }
     }
 }
