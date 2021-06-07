@@ -31,7 +31,6 @@
 		18BA247C265D78270015FB25 /* SearchMovies.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18BA247B265D78270015FB25 /* SearchMovies.storyboard */; };
 		18BA2481265FA3660015FB25 /* FavoriteMovies.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18BA2480265FA3660015FB25 /* FavoriteMovies.storyboard */; };
 		18CC8CF5265C39C30032FE8A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CC8CF4265C39C30032FE8A /* AppDelegate.swift */; };
-		18CC8CF7265C39C30032FE8A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CC8CF6265C39C30032FE8A /* SceneDelegate.swift */; };
 		18CC8CF9265C39C30032FE8A /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CC8CF8265C39C30032FE8A /* TabBarViewController.swift */; };
 		18CC8CFE265C39C40032FE8A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18CC8CFD265C39C40032FE8A /* Assets.xcassets */; };
 		18CC8D01265C39C40032FE8A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18CC8CFF265C39C40032FE8A /* LaunchScreen.storyboard */; };
@@ -62,7 +61,6 @@
 		18BA2480265FA3660015FB25 /* FavoriteMovies.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FavoriteMovies.storyboard; sourceTree = "<group>"; };
 		18CC8CF1265C39C30032FE8A /* SApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18CC8CF4265C39C30032FE8A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		18CC8CF6265C39C30032FE8A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		18CC8CF8265C39C30032FE8A /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		18CC8CFD265C39C40032FE8A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		18CC8D00265C39C40032FE8A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -312,7 +310,6 @@
 				187636C9266572950009098F /* Domain */,
 				18BA2472265D748B0015FB25 /* Presentation */,
 				18CC8CF4265C39C30032FE8A /* AppDelegate.swift */,
-				18CC8CF6265C39C30032FE8A /* SceneDelegate.swift */,
 				18CC8D02265C39C40032FE8A /* Info.plist */,
 				18CC8CF8265C39C30032FE8A /* TabBarViewController.swift */,
 				18CC8CFF265C39C40032FE8A /* LaunchScreen.storyboard */,
@@ -466,7 +463,6 @@
 				180B93CB266D782300D5C233 /* DetailMovieViewController.swift in Sources */,
 				180B93D1266D83C500D5C233 /* Extensions.swift in Sources */,
 				18143471265FDB3F005CDAC8 /* FavoriteMoviesViewController.swift in Sources */,
-				18CC8CF7265C39C30032FE8A /* SceneDelegate.swift in Sources */,
 				180B93C02669418F00D5C233 /* MoviesResponseDTO.swift in Sources */,
 				18BA247A265D77B20015FB25 /* SearchMoviesViewController.swift in Sources */,
 				180B93AB26692C8200D5C233 /* SearchMoviesUseCase.swift in Sources */,
@@ -544,7 +540,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -599,7 +595,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -618,7 +614,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = RS4VTLD734;
 				INFOPLIST_FILE = SApp/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -639,7 +635,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = RS4VTLD734;
 				INFOPLIST_FILE = SApp/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -661,7 +657,7 @@
 				18CC8D04265C39C40032FE8A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		18CC8D05265C39C40032FE8A /* Build configuration list for PBXNativeTarget "SApp" */ = {
 			isa = XCConfigurationList;
@@ -670,7 +666,7 @@
 				18CC8D07265C39C40032FE8A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
 	};

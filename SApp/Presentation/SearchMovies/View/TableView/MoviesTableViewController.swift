@@ -57,7 +57,6 @@ extension MoviesTableViewController {
             let vs = DetailMovieViewController(nibName: "DetailMovieViewController", bundle: nil)
             vs.movie = result
             self.present(vs, animated: true, completion: nil)
-            
         }
     }
 }

@@ -49,7 +49,7 @@ class MoviesViewModel: MoviesViewModelLogic {
             case .success(let page):
                 self.appendMovies(page: page)
             case .failure(let error):
-                print("ERROR \(error)")
+                NSLog("ERROR: \(String(describing: MoviesViewModel.self)) \(error)")
             }
             
             completion(true)
